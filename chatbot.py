@@ -95,6 +95,6 @@ if prompt := st.chat_input("What is up?"):
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         #st.markdown(response)
-        typewriter(text=response, speed=10)
+        typewriter(text=response, speed=20)
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})

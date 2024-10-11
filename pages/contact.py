@@ -2,6 +2,9 @@ import streamlit as st
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import utils as utl
+
+
 
 # Function to send the email
 def send_email(to_email, from_email, subject, message_body):
@@ -35,14 +38,20 @@ def send_email(to_email, from_email, subject, message_body):
 # Streamlit app layout
 #st.title("Contact Us")
 
-# Create a form for user input
-with st.form("contact_form"):
-    name = st.text_input("Your Name")
-    email = st.text_input("Your Email")
-    message = st.text_area("Your Message")
+# Create a centered layout using columns
+col1, col2, col3 = st.columns([1, 2, 1])  # The middle column (col2) is wider to center the content
 
-    # Submit button
-    submitted = st.form_submit_button("Send Message")
+with col2:
+    st.header("Send us some feedback...",)
+    
+    # Create a form for user input
+    with st.form("contact_form"):
+        name = st.text_input("Your Name")
+        email = st.text_input("Your Email")
+        message = st.text_area("Your Message")
+
+        # Submit button
+        submitted = st.form_submit_button("Send Message")
 
 # Process the form submission
 if submitted:

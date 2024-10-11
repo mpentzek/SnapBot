@@ -1,0 +1,41 @@
+
+/* color the header in sl blue */
+[data-testid="stHeader"] {
+    height: 6rem;
+    /* background:rgba(0,0,0,0); */
+    background: #222b54;
+    color: white;
+}
+
+/* Place the SnapBot Logo in the Header */
+[data-testid="stHeader"]::before {
+    content: "";
+    background: url('https://raw.githubusercontent.com/mpentzek/SL-Chatbot-UI/refs/heads/main/images/SnapBot-small.png') no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    opacity: 0.8; /* Transparenz des Bildes */
+    z-index: -1;
+}
+
+/* Navigation expander in Header */
+.st-emotion-cache-1p8vjmd {
+    z-index: 999990;
+    color: white;
+}
+
+/* rainbow style hello everything text */
+.hello-text {
+    font-size: 3rem;  /* Größe des Textes anpassen */
+    font-weight: bold;  /* Fettgedruckter Text */
+    background: linear-gradient(to right, #ff087f, #ff8831, #fefae3);  /* Farbverlauf von Blau nach Orange */
+    background-size: 100%;  /* Der Verlauf deckt die gesamte Breite ab */
+    -webkit-background-clip: text;  /* Clip den Hintergrund an den Text (nur für Webkit-Browser) */
+    -webkit-text-fill-color: transparent;  /* Text transparent machen, damit der Farbverlauf sichtbar ist */
+    background-clip: text;  /* Für Nicht-Webkit-Browser */
+    text-fill-color: transparent;  /* Text transparent für alle */
+    display: inline-block;
+}

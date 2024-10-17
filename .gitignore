@@ -162,3 +162,5 @@ cython_debug/
 
 #Secrets file
 secrets.toml
+
+.DS_Store

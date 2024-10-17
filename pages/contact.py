@@ -42,7 +42,7 @@ def send_email(to_email, from_email, subject, message_body):
 col1, col2, col3 = st.columns([1, 2, 1])  # The middle column (col2) is wider to center the content
 
 with col2:
-    st.header("Send us some feedback...",)
+    st.header("We would love to hear your feedback...",)
     
     # Create a form for user input
     with st.form("contact_form"):

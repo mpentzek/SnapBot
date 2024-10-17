@@ -17,12 +17,12 @@ def typewriter(text: str, speed: int):
 
 # SnapLogic Retriever API
 RETRIEVER_URL = env["SL_RETRIEVER_URL"] + "?vectordb_index=" + env["SL_VECTORDB_INDEX"] 
-RETRIEVER_BEARER_TOKEN = env["SL_RETRIEVER_TOKEN"]
+RETRIEVER_BEARER_TOKEN = st.secrets["SL_RETRIEVER_API_TOKEN"]
 RETRIEVER_TIMEOUT = int(env["SL_RETRIEVER_TIMEOUT"])
 
 # SnapLogic Pinecone Namespace API
 NAMESPACES_API_URL = env["SL_NAMESPACES_API_URL"]
-NAMESPACES_API_TOKEN = env["SL_NAMESPACES_API_TOKEN"]
+NAMESPACES_API_TOKEN = st.secrets["SL_NAMESPACES_API_TOKEN"]
 NAMESPACES_API_TIMEOUT = int(env["SL_NAMESPACES_TIMEOUT"])
 
 # Initialize chat history

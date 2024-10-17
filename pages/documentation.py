@@ -15,9 +15,9 @@ else:
     markdown_text = "Error fetching the markdown file."
 
 # Create a centered layout using columns
-col1, col2, col3 = st.columns([1, 2, 1])  # The middle column (col2) is wider to center the content
+#col1, col2, col3 = st.columns([1, 2, 1])  # The middle column (col2) is wider to center the content
 
-with col2:
-    st.header("Documentation")
-    # Render the markdown content in Streamlit
-    st.markdown(markdown_text)
+#with col2:
+st.header("Documentation")
+# Render the markdown content in Streamlit
+st.markdown(markdown_text)

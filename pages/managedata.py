@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import hmac
 from dotenv import dotenv_values
 import utils as utl
 import pandas as pd
@@ -26,6 +27,46 @@ delete_disabled = True
 print('---------------------------------------------')
 print(f'Code Start Session State: {st.session_state}')
 print('---------------------------------------------')
+
+
+def check_password():
+    """Returns `True` if the user had a correct password."""
+
+    def login_form():
+        """Form with widgets to collect user information"""
+        with st.form("Credentials"):
+            st.write("##### You must authenticate before making changes to the domain data :key:")
+            st.text_input("Username", key="username")
+            st.text_input("Password", type="password", key="password")
+            st.form_submit_button("Log in", on_click=password_entered)
+
+    def password_entered():
+        """Checks whether a password entered by the user is correct."""
+        if st.session_state["username"] in st.secrets[
+            "passwords"
+        ] and hmac.compare_digest(
+            st.session_state["password"],
+            st.secrets.passwords[st.session_state["username"]],
+        ):
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # Don't store the username or password.
+            del st.session_state["username"]
+        else:
+            st.session_state["password_correct"] = False
+
+    # Return True if the username + password is validated.
+    if st.session_state.get("password_correct", False):
+        return True
+
+    # Show inputs for username + password.
+    login_form()
+    if "password_correct" in st.session_state:
+        st.error("😕 User not known or password incorrect")
+    return False
+
+#check if user is authorized
+if not check_password():
+    st.stop()
 
 
 def write_namespaces_to_session_state():
@@ -57,10 +98,9 @@ if 'uploaded_file' not in st.session_state:
 # Create a centered layout using columns
 col1, col2, col3 = st.columns([1, 2, 1])  # The middle column (col2) is wider to center the content
 
-#with col2:
+
 st.header("Manage your RAG data domains")
-#st.header("Manage your RAG data domains",divider=True)
-#st.title("Manage your RAG data domains")
+
 
 
 if 'pineconestats' not in st.session_state:

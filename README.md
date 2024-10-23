@@ -1,5 +1,32 @@
 This is a streamlit build Chatbot UI which uses backend services created within SnapLogic, the first platform for generative integration.
 
+##### Table of Contents
+[Using the chatbot](https://github.com/mpentzek/SnapBot/blob/main/README.md#using-the-chatbot)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Chat with one data domain](https://github.com/mpentzek/SnapBot/blob/main/README.md#chat-with-one-data-domain)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Chat with multiple data domains](https://github.com/mpentzek/SnapBot/blob/main/README.md#chat-with-multiple-data-domains)  
+[Managing Domain Data](https://github.com/mpentzek/SnapBot/blob/main/README.md#managing-domain-data)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Overview of available namespaces](https://github.com/mpentzek/SnapBot/blob/main/README.md#overview-of-available-namespace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Upload data into a new namespace](https://github.com/mpentzek/SnapBot/blob/main/README.md#upload-data-into-a-new-namespace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Add data to an existing namespace](https://github.com/mpentzek/SnapBot/blob/main/README.md#add-data-to-an-existing-namespace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Delete a namespace](https://github.com/mpentzek/SnapBot/blob/main/README.md#delete-a-namespace)  
+
+
+# Using the chatbot
+## Chat with one data domain
+Choose a data domain you want to ask your questions against.
+Enter your query in the chat box. For example, if you're using a HR service chatbot, you might ask, "When do I got paid?".
+![one data domain](https://raw.githubusercontent.com/mpentzek/SnapBot/refs/heads/main/images/chatbot_use_single_data_source.png)
+
+## Chat with multiple data domains
+You also can choose more than one data domain to chat with.
+Switching on "use of multiple data domains" will let you pick multiple data domains.
+![Multiple Data domains](https://raw.githubusercontent.com/mpentzek/SnapBot/refs/heads/main/images/chatbot_use_multiple_data_source.png)
+
+When you select more than one data domain, you can ask questions that will highlight differences between them. For instance, if you choose the Lyft Annual Report and the Uber Annual Report as your data domains, you might ask, 'How do the service offerings in both reports compare?' or 'What is the difference in revenue between the two companies in 2022?'
+![prompt for multiple data domains](https://raw.githubusercontent.com/mpentzek/SnapBot/refs/heads/main/images/chatbot_use_multiple_data_source_prompt.png)
+
+
+
 # Manage Domain Data
 As this is a Retrieval-Augmented Generation (RAG) chatbot the data is stored in Pinecone Vector Database.
 With this chatbot you can manage the data and the corresponding namespaces. 
@@ -24,16 +51,3 @@ Existing namespaces can be deleted after confirmation.
 This process removes all vectors irreversible.
 
 ![Namespace Deletion](https://raw.githubusercontent.com/mpentzek/SnapBot/refs/heads/main/images/manage_datadomain_delete_namespace.png)
-
-
-# Use the chatbot
-## Chat with one data domain
-Choose a data domain you want to ask your questions against.
-Enter your query in the chat box. For example, if you're using a HR service chatbot, you might ask, "When do I got paid?".
-
-## Chat with multiple data domains
-You also can choose more than one data domain to chat with.In that case you can ask question which will return differences in the data domains. I you you choose for example Lyft Annual Report and Uber Annual Report as data domains you can ask e.g. How does the service offerings in both reports differ?" or "What is the difference in revenue in 2022 for both companies?"
- 
-
-![Chatbot UI](https://github.com/mpentzek/SL-Chatbot-UI/blob/main/images/Chatbot.png?raw=true)
-

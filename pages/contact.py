@@ -36,7 +36,7 @@ st.markdown(
     </style>
     <div class="centered">
         <h3>Contact</h3>
-        <p>Please send feedback, comments, bugs etc. to: 
+        <p>Please send feedback, bugs etc. to: 
         <a href="mailto:mpentzek@ssnaplogic.com">mpentzek@snaplogic.com</a>
         </p>
     </div>

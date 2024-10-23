@@ -113,20 +113,41 @@ if prompt := st.chat_input("What is up?"):
     retriever_headers = {
         'Authorization': f'Bearer {RETRIEVER_BEARER_TOKEN}'
         }
-    # Call the SnapLogic Retriever Pipeline / API
-    response = requests.post(
-        url=RETRIEVER_URL + "&vectordb_namespace=" + str(selected_namespaces),
-        data={"prompt" : prompt},
-        headers=retriever_headers,
-        timeout=RETRIEVER_TIMEOUT,
-        verify=False
-        )
+    
+    try:
+        # Call the SnapLogic Retriever Pipeline / API
+        response = requests.post(
+            url=RETRIEVER_URL + "&vectordb_namespace=" + str(selected_namespaces),
+            data={"prompt" : prompt},
+            headers=retriever_headers,
+            timeout=RETRIEVER_TIMEOUT,
+            verify=False
+            )
 
-    result = response.json()
-    response=result[0]['choices'][0]['message']['content']
+        result = response.json()
 
-    # Display assistant response in chat message container
-    with st.chat_message("assistant"):
-        typewriter(text=response, speed=20)
-    # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": response})
+        # Access the required content from the response
+        if result and len(result) > 0 and 'choices' in result[0]:
+            message_content = result[0]['choices'][0]['message']['content']
+            #st.success("Response received!")
+            # Display assistant response in chat message container
+            with st.chat_message("assistant"):
+                typewriter(text=message_content, speed=20)
+                # Add assistant response to chat history
+                st.session_state.messages.append({"role": "assistant", "content": message_content})
+                st.rerun()
+        else:
+            st.error("Unexpected response structure. Please try again.")
+
+        #response=result[0]['choices'][0]['message']['content']
+    
+    except requests.exceptions.Timeout:
+        st.error(f"Request timed out after {RETRIEVER_TIMEOUT} seconds.")
+    except requests.exceptions.RequestException as e:
+        st.error(f"An error occurred: {e}")
+    except ValueError:
+        st.error("Failed to parse JSON. Please check the response.")
+    except KeyError:
+        st.error("Key not found in the response. Please verify the API response structure.")
+
+    

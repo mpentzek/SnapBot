@@ -51,7 +51,7 @@ if 'namespaces_to_query' not in st.session_state:
 # Show list with available namespaces to choose from as well as cleat history button
 with st.expander("Choose your chat domain.."):
     left_column, right_column = st.columns([0.8, 0.2],vertical_alignment="bottom")
-    on = left_column.toggle("Compare mode - using multiple data domains")
+    on = left_column.toggle("use of multiple data domains")
     if on:
         selected_namespaces = st.multiselect(
             "Which data domains (Namespaces) should be used?",

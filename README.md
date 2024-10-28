@@ -11,6 +11,7 @@ This is a streamlit build Chatbot UI which uses backend services created within 
 &nbsp;&nbsp;&nbsp;&nbsp;[Delete a namespace](https://github.com/mpentzek/SnapBot/blob/main/README.md#delete-a-namespace)  
 
 
+
 # Using the chatbot
 ## Chat with one data domain
 Choose a data domain you want to ask your questions against.
@@ -27,7 +28,7 @@ When you select more than one data domain, you can ask questions that will highl
 
 
 
-# Manage Domain Data
+# Managing Domain Data
 As this is a Retrieval-Augmented Generation (RAG) chatbot the data is stored in Pinecone Vector Database.
 With this chatbot you can manage the data and the corresponding namespaces. 
 However, you need to authenticate first befor you can manage the domain data.

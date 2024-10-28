@@ -25,13 +25,23 @@ NAMESPACES_API_URL = env["SL_NAMESPACES_API_URL"]
 NAMESPACES_API_TOKEN = st.secrets["SL_NAMESPACES_API_TOKEN"]
 NAMESPACES_API_TIMEOUT = int(env["SL_NAMESPACES_TIMEOUT"])
 
+print("re-run of chatbot page")
+if 'namespaces_to_query' not in st.session_state:
+    print("rerun_chatbot not in state")
+else:
+    print(f"rerun_chatbot vale {st.session_state['rerun_chatbot']}")
+    
+
+print(st.session_state)
+
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 
+
 # Get the available namespaces of the given pinecone db index
-if 'namespaces_to_query' not in st.session_state:
+if 'namespaces_to_query' not in st.session_state  or st.session_state['rerun_chatbot']:
     # Define the HTTP Headers for calling the SnapLogic Retriever Pipeline 
     namespacesAPI_headers = {
         'Authorization': f'Bearer {NAMESPACES_API_TOKEN}'
@@ -46,7 +56,7 @@ if 'namespaces_to_query' not in st.session_state:
     result = response.json()
     print(result)
     st.session_state['namespaces_to_query'] = [item["namespace"] for item in result]
-
+    st.session_state['rerun_chatbot'] = False
 
 # Show list with available namespaces to choose from as well as cleat history button
 with st.expander("Choose your chat domain.."):

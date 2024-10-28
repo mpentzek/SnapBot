@@ -149,6 +149,7 @@ if uploaded_file is not None and uploaded_file != st.session_state.uploaded_file
             st.session_state.uploaded_file = uploaded_file
             del st.session_state.pineconens
             st.toast(f'The file {uploaded_file.name} has been successfully processed', icon=":material/upload_file:")
+            st.session_state['rerun_chatbot'] = True
             st.rerun()
 
 st.divider()
@@ -186,6 +187,7 @@ def deleteNamespace(pineconens):
                 if result == 200:
                     del st.session_state['pineconens']
                     st.toast(f'Namespace {namespace_to_delete} has been successfully deleted', icon=":material/delete:")
+                    st.session_state['rerun_chatbot'] = True
                     st.rerun()
 
 delete_disabled = (namespace_to_delete == "")

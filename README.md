@@ -1,14 +1,14 @@
 This is a streamlit build Chatbot UI which uses backend services created within SnapLogic, the first platform for generative integration.
 
 ##### Table of Contents
-[Using the chatbot](https://github.com/mpentzek/SnapBot/blob/main/README.md#using-the-chatbot)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Chat with one data domain](https://github.com/mpentzek/SnapBot/blob/main/README.md#chat-with-one-data-domain)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Chat with multiple data domains](https://github.com/mpentzek/SnapBot/blob/main/README.md#chat-with-multiple-data-domains)  
+[Using the chatbot](#using-the-chatbot)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Chat with one data domain](#chat-with-one-data-domain)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Chat with multiple data domains](#chat-with-multiple-data-domains)  
 [Managing Domain Data](#managing-domain-data)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Overview of available namespaces](https://github.com/mpentzek/SnapBot/blob/main/README.md#overview-of-available-namespace)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Upload data into a new namespace](https://github.com/mpentzek/SnapBot/blob/main/README.md#upload-data-into-a-new-namespace)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Add data to an existing namespace](https://github.com/mpentzek/SnapBot/blob/main/README.md#add-data-to-an-existing-namespace)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Delete a namespace](https://github.com/mpentzek/SnapBot/blob/main/README.md#delete-a-namespace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Overview of available namespaces](#overview-of-available-namespace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Upload data into a new namespace](#upload-data-into-a-new-namespace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Add data to an existing namespace](#add-data-to-an-existing-namespace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Delete a namespace](#delete-a-namespace)  
 
 
 

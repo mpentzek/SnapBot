@@ -72,8 +72,7 @@ with st.expander("Choose your chat domain.."):
     else:
         selected_namespaces = st.selectbox(
         "Please select an existing data domain",
-        st.session_state['namespaces_to_query'],
-        index = 1
+        st.session_state['namespaces_to_query']
         )
 
     if right_column.button('Clear Historie', use_container_width=True):

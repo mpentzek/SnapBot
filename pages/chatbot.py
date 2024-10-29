@@ -41,7 +41,9 @@ if "messages" not in st.session_state:
 
 
 # Get the available namespaces of the given pinecone db index
-if 'namespaces_to_query' not in st.session_state  or st.session_state['rerun_chatbot']:
+#if 'namespaces_to_query' not in st.session_state  or st.session_state['rerun_chatbot']:
+if 'namespaces_to_query' not in st.session_state:
+
     # Define the HTTP Headers for calling the SnapLogic Retriever Pipeline 
     namespacesAPI_headers = {
         'Authorization': f'Bearer {NAMESPACES_API_TOKEN}'

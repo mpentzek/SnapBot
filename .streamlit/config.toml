@@ -4,3 +4,7 @@ backgroundColor = "#FFFFFF"             # White background like on the website
 secondaryBackgroundColor = "#F3F4F6"    # Light grey secondary background
 textColor = "#333333"                   # Dark grey/black text color
 font = "sans serif"                     # Clean and modern font style
+
+
+[logger]
+level = "debug"

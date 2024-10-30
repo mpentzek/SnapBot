@@ -1,9 +1,13 @@
 import streamlit as st
 import requests
 import hmac
+import logging
 from dotenv import dotenv_values
 import utils as utl
 import pandas as pd
+
+logging.info("(Re-) Run of chatbot.py")
+logging.debug(st.session_state)
 
 env = dotenv_values(".env")
 

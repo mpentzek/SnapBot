@@ -1,7 +1,12 @@
 import streamlit as st
 import time
 import requests
+import logging
 from dotenv import dotenv_values
+
+logging.info("(Re-) Run of chatbot.py")
+logging.debug(st.session_state)
+
 
 env = dotenv_values(".env")
 

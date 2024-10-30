@@ -1,7 +1,13 @@
 import hmac
 import streamlit as st
+import logging
 from dotenv import dotenv_values
 import utils as utl
+
+logging.basicConfig(level=logging.debug)
+
+logging.info("(Re-) Run of main.py")
+logging.debug(st.session_state)
 
 # Load the env variables from .env file
 env = dotenv_values(".env")

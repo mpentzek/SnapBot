@@ -4,10 +4,12 @@ import logging
 from dotenv import dotenv_values
 import utils as utl
 
-logging.basicConfig(level=logging.debug)
+logging.basicConfig(level=logging.DEBUG)
 
-logging.info("(Re-) Run of main.py")
+logging.info("--------------")
+logging.info("Start of main.py")
 logging.debug(st.session_state)
+logging.info("--------------")
 
 # Load the env variables from .env file
 env = dotenv_values(".env")
@@ -50,3 +52,8 @@ pg = st.navigation(pages)
 
 #run this app/page
 pg.run()
+
+logging.info("--------------")
+logging.info("End of main.py")
+logging.debug(st.session_state)
+logging.info("--------------")

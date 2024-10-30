@@ -6,8 +6,10 @@ from dotenv import dotenv_values
 import utils as utl
 import pandas as pd
 
-logging.info("(Re-) Run of chatbot.py")
+logging.info("--------------")
+logging.info("Start of managedata.py")
 logging.debug(st.session_state)
+logging.info("--------------")
 
 env = dotenv_values(".env")
 
@@ -199,3 +201,7 @@ delete_disabled = (namespace_to_delete == "")
 if right_column.button('Delete', disabled=delete_disabled,use_container_width=True):
     deleteNamespace(namespace_to_delete)
 
+logging.info("--------------")
+logging.info("End of managedata.py")
+logging.debug(st.session_state)
+logging.info("--------------")

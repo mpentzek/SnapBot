@@ -4,9 +4,10 @@ import requests
 import logging
 from dotenv import dotenv_values
 
-logging.info("(Re-) Run of chatbot.py")
+logging.info("--------------")
+logging.info("Start of chatbot.py")
 logging.debug(st.session_state)
-
+logging.info("--------------")
 
 env = dotenv_values(".env")
 
@@ -31,10 +32,10 @@ NAMESPACES_API_TOKEN = st.secrets["SL_NAMESPACES_API_TOKEN"]
 NAMESPACES_API_TIMEOUT = int(env["SL_NAMESPACES_TIMEOUT"])
 
 print("re-run of chatbot page")
-if 'namespaces_to_query' not in st.session_state:
+if 'rerun_chatbot' not in st.session_state:
     print("rerun_chatbot not in state")
 else:
-    print(f"rerun_chatbot vale {st.session_state['rerun_chatbot']}")
+    print(f"rerun_chatbot value {st.session_state['rerun_chatbot']}")
     
 
 print(st.session_state)
@@ -166,4 +167,7 @@ if prompt := st.chat_input("What is up?"):
     except KeyError:
         st.error("Key not found in the response. Please verify the API response structure.")
 
-    
+logging.info("--------------")
+logging.info("End of chatbot.py")
+logging.debug(st.session_state)
+logging.info("--------------")

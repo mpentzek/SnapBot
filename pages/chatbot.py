@@ -27,8 +27,8 @@ RETRIEVER_BEARER_TOKEN = st.secrets["SL_RETRIEVER_API_TOKEN"]
 RETRIEVER_TIMEOUT = int(env["SL_RETRIEVER_TIMEOUT"])
 
 # SnapLogic Pinecone Namespace API
-NAMESPACES_API_URL = env["SL_NAMESPACES_API_URL"]
-NAMESPACES_API_TOKEN = st.secrets["SL_NAMESPACES_API_TOKEN"]
+NAMESPACES_API_URL = env["SL_NAMESPACES_API_ULTRA_URL"]
+NAMESPACES_API_TOKEN = st.secrets["SL_NAMESPACES_API_ULTRA_TOKEN"]
 NAMESPACES_API_TIMEOUT = int(env["SL_NAMESPACES_TIMEOUT"])
 
 print("re-run of chatbot page")
@@ -114,7 +114,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # React to user prompt input
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("Send a message to SnapBot..."):
     # Display prompt input in chat message container
     st.chat_message("user").markdown(prompt)
     # Add prompt input to chat history
@@ -131,41 +131,42 @@ if prompt := st.chat_input("What is up?"):
         'Authorization': f'Bearer {RETRIEVER_BEARER_TOKEN}'
         }
     
-    try:
-        # Call the SnapLogic Retriever Pipeline / API
-        response = requests.post(
-            url=RETRIEVER_URL + "&vectordb_namespace=" + str(selected_namespaces),
-            data={"prompt" : prompt},
-            headers=retriever_headers,
-            timeout=RETRIEVER_TIMEOUT,
-            verify=False
-            )
+    with st.spinner(text="analyzing..."):
+        try:
+            # Call the SnapLogic Retriever Pipeline / API
+            response = requests.post(
+                url=RETRIEVER_URL + "&vectordb_namespace=" + str(selected_namespaces),
+                data={"prompt" : prompt},
+                headers=retriever_headers,
+                timeout=RETRIEVER_TIMEOUT,
+                verify=False
+                )
 
-        result = response.json()
+            result = response.json()
 
-        # Access the required content from the response
-        if result and len(result) > 0 and 'choices' in result[0]:
-            message_content = result[0]['choices'][0]['message']['content']
-            #st.success("Response received!")
-            # Display assistant response in chat message container
-            with st.chat_message("assistant"):
-                typewriter(text=message_content, speed=20)
-                # Add assistant response to chat history
-                st.session_state.messages.append({"role": "assistant", "content": message_content})
-                st.rerun()
-        else:
-            st.error("Unexpected response structure. Please try again.")
+            # Access the required content from the response
+            if result and len(result) > 0 and 'choices' in result[0]:
+                message_content = result[0]['choices'][0]['message']['content']
+                #st.success("Response received!")
+                # Display assistant response in chat message container
+                with st.chat_message("assistant"):
+                    typewriter(text=message_content, speed=20)
+                    # Add assistant response to chat history
+                    st.session_state.messages.append({"role": "assistant", "content": message_content})
+                    st.rerun()
+            else:
+                st.error("Unexpected response structure. Please try again.")
 
-        #response=result[0]['choices'][0]['message']['content']
-    
-    except requests.exceptions.Timeout:
-        st.error(f"Request timed out after {RETRIEVER_TIMEOUT} seconds.")
-    except requests.exceptions.RequestException as e:
-        st.error(f"An error occurred: {e}")
-    except ValueError:
-        st.error("Failed to parse JSON. Please check the response.")
-    except KeyError:
-        st.error("Key not found in the response. Please verify the API response structure.")
+            #response=result[0]['choices'][0]['message']['content']
+        
+        except requests.exceptions.Timeout:
+            st.error(f"Request timed out after {RETRIEVER_TIMEOUT} seconds.")
+        except requests.exceptions.RequestException as e:
+            st.error(f"An error occurred: {e}")
+        except ValueError:
+            st.error("Failed to parse JSON. Please check the response.")
+        except KeyError:
+            st.error("Key not found in the response. Please verify the API response structure.")
 
 logging.info("--------------")
 logging.info("End of chatbot.py")

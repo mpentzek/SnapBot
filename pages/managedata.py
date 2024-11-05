@@ -151,7 +151,7 @@ if uploaded_file is not None and uploaded_file != st.session_state.uploaded_file
             timeout=INDEXER_TIMEOUT,
             verify=False
         )
-        if response.status_code == 200:
+        if response.status_code == 201:
             st.session_state.uploaded_file = uploaded_file
             del st.session_state.pineconens
             st.toast(f'The file {uploaded_file.name} has been successfully processed', icon=":material/upload_file:")

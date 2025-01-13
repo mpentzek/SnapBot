@@ -1,6 +1,5 @@
 import streamlit as st
 
-#These is a remark to test some github stuff
 
 # Access the theme settings
 primary_color = st.get_option("theme.primaryColor")
